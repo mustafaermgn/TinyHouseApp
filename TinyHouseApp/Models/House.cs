@@ -1,4 +1,6 @@
-﻿namespace TinyHouseApp.Models
+﻿using System.Collections.Generic;
+
+namespace TinyHouseApp.Models
 {
     public class House
     {
@@ -9,6 +11,9 @@
         public decimal PricePerNight { get; set; }
         public string Location { get; set; }
         public bool IsActive { get; set; }
+
+        // Paths of images associated with this house
+        public List<string> ImagePaths { get; set; } = new();
 
     }
 }

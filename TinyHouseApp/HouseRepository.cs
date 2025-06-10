@@ -13,21 +13,37 @@ public class HouseRepository
         _connectionString = connectionString;
     }
 
-    public void AddHouse(House house)
+    public int AddHouse(House house)
     {
         using (var con = new SqlConnection(_connectionString))
         {
-            string sql = "INSERT INTO Houses (Title, Description, ImageData) VALUES (@Title, @Description, @ImageData)";
+            con.Open();
+            string sql = @"INSERT INTO Houses(OwnerID,Title,Description,PricePerNight,Location,IsActive)
+                            VALUES(@o,@t,@d,@p,@l,@a); SELECT SCOPE_IDENTITY();";
             using (var cmd = new SqlCommand(sql, con))
             {
-                cmd.Parameters.Add("@Title", SqlDbType.NVarChar).Value = house.Title;
-                cmd.Parameters.Add("@Description", SqlDbType.NVarChar).Value = house.Description ?? (object)DBNull.Value;
-                cmd.Parameters.Add("@ImageData", SqlDbType.VarBinary).Value = house.ImageData ?? (object)DBNull.Value;
+                cmd.Parameters.AddWithValue("@o", house.OwnerID);
+                cmd.Parameters.AddWithValue("@t", house.Title);
+                cmd.Parameters.AddWithValue("@d", house.Description ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@p", house.PricePerNight);
+                cmd.Parameters.AddWithValue("@l", house.Location ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@a", house.IsActive);
+                house.HouseID = Convert.ToInt32(cmd.ExecuteScalar());
+            }
 
-                con.Open();
-                cmd.ExecuteNonQuery();
+            if (house.ImagePaths != null)
+            {
+                foreach (var path in house.ImagePaths)
+                {
+                    using var cmdImg = new SqlCommand("INSERT INTO HouseImages(HouseID,ImagePath) VALUES(@h,@p)", con);
+                    cmdImg.Parameters.AddWithValue("@h", house.HouseID);
+                    cmdImg.Parameters.AddWithValue("@p", path);
+                    cmdImg.ExecuteNonQuery();
+                }
             }
         }
+
+        return house.HouseID;
     }
 
     public List<House> GetAllHouses()
@@ -36,7 +52,7 @@ public class HouseRepository
 
         using (var con = new SqlConnection(_connectionString))
         {
-            string sql = "SELECT Id, Title, Description, ImageData FROM Houses ORDER BY Id DESC";
+            string sql = "SELECT * FROM Houses ORDER BY HouseID DESC";
             using (var cmd = new SqlCommand(sql, con))
             {
                 con.Open();
@@ -46,12 +62,30 @@ public class HouseRepository
                     {
                         houses.Add(new House
                         {
-                            Id = reader.GetInt32(0),
-                            Title = reader.GetString(1),
-                            Description = reader.IsDBNull(2) ? null : reader.GetString(2),
-                            ImageData = reader.IsDBNull(3) ? null : (byte[])reader[3]
+                            HouseID = reader.GetInt32(reader.GetOrdinal("HouseID")),
+                            OwnerID = reader.GetInt32(reader.GetOrdinal("OwnerID")),
+                            Title = reader.GetString(reader.GetOrdinal("Title")),
+                            Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
+                            PricePerNight = reader.GetDecimal(reader.GetOrdinal("PricePerNight")),
+                            Location = reader.IsDBNull(reader.GetOrdinal("Location")) ? null : reader.GetString(reader.GetOrdinal("Location")),
+                            IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive")),
+                            ImagePaths = new List<string>()
                         });
                     }
+                }
+
+                // load images for each house
+                foreach (var h in houses)
+                {
+                    cmd.CommandText = "SELECT ImagePath FROM HouseImages WHERE HouseID=@h";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@h", h.HouseID);
+                    using var rImg = cmd.ExecuteReader();
+                    while (rImg.Read())
+                    {
+                        h.ImagePaths.Add(rImg.GetString(0));
+                    }
+                    rImg.Close();
                 }
             }
         }

@@ -13,6 +13,8 @@
         private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.CheckBox chkActive;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnAddImage;
+        private System.Windows.Forms.ListBox lstImages;
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.Panel panelForm;
@@ -36,6 +38,8 @@
             txtLocation = new TextBox();
             chkActive = new CheckBox();
             btnSave = new Button();
+            btnAddImage = new Button();
+            lstImages = new ListBox();
             panelHeader = new Panel();
             lblHeader = new Label();
             panelForm = new Panel();
@@ -135,9 +139,29 @@
             chkActive.TabIndex = 8;
             chkActive.Text = "Aktif mi?";
             chkActive.CheckedChanged += chkActive_CheckedChanged;
-            // 
+            //
+            // btnAddImage
+            //
+            btnAddImage.FlatStyle = FlatStyle.Flat;
+            btnAddImage.Location = new Point(359, 302);
+            btnAddImage.Name = "btnAddImage";
+            btnAddImage.Size = new Size(120, 25);
+            btnAddImage.TabIndex = 9;
+            btnAddImage.Text = "Resim Ekle";
+            btnAddImage.UseVisualStyleBackColor = true;
+            btnAddImage.Click += btnAddImage_Click;
+            //
+            // lstImages
+            //
+            lstImages.FormattingEnabled = true;
+            lstImages.ItemHeight = 15;
+            lstImages.Location = new Point(259, 340);
+            lstImages.Name = "lstImages";
+            lstImages.Size = new Size(400, 94);
+            lstImages.TabIndex = 10;
+            //
             // btnSave
-            // 
+            //
             btnSave.BackColor = Color.SteelBlue;
             btnSave.FlatAppearance.BorderSize = 0;
             btnSave.FlatStyle = FlatStyle.Flat;
@@ -178,6 +202,8 @@
             // 
             panelForm.BackColor = Color.White;
             panelForm.Controls.Add(btnSave);
+            panelForm.Controls.Add(btnAddImage);
+            panelForm.Controls.Add(lstImages);
             panelForm.Controls.Add(lblTitle);
             panelForm.Controls.Add(txtTitle);
             panelForm.Controls.Add(lblDesc);

@@ -31,6 +31,7 @@
             lblHeader = new Label();
             panelControls = new Panel();
             panelGrid = new Panel();
+            btnDetay = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvHouses).BeginInit();
             panelHeader.SuspendLayout();
             panelControls.SuspendLayout();
@@ -79,6 +80,7 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvHouses.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvHouses.RowHeadersWidth = 62;
             dgvHouses.RowTemplate.Height = 30;
             dgvHouses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvHouses.Size = new Size(694, 501);
@@ -152,13 +154,14 @@
             lblHeader.ForeColor = Color.White;
             lblHeader.Location = new Point(20, 18);
             lblHeader.Name = "lblHeader";
-            lblHeader.Size = new Size(113, 25);
+            lblHeader.Size = new Size(165, 38);
             lblHeader.TabIndex = 0;
             lblHeader.Text = "Host Paneli";
             // 
             // panelControls
             // 
             panelControls.BackColor = Color.WhiteSmoke;
+            panelControls.Controls.Add(btnDetay);
             panelControls.Controls.Add(btnAddHouse);
             panelControls.Controls.Add(btnEditHouse);
             panelControls.Controls.Add(btnDeleteHouse);
@@ -176,6 +179,17 @@
             panelGrid.Name = "panelGrid";
             panelGrid.Size = new Size(694, 501);
             panelGrid.TabIndex = 6;
+            // 
+            // btnDetay
+            // 
+            btnDetay.BackColor = Color.GreenYellow;
+            btnDetay.Location = new Point(20, 200);
+            btnDetay.Name = "btnDetay";
+            btnDetay.Size = new Size(150, 40);
+            btnDetay.TabIndex = 4;
+            btnDetay.Text = "Detay Getir";
+            btnDetay.UseVisualStyleBackColor = false;
+            btnDetay.Click += btnDetay_Click;
             // 
             // HostForm
             // 
@@ -196,5 +210,6 @@
             panelGrid.ResumeLayout(false);
             ResumeLayout(false);
         }
+        private Button btnDetay;
     }
 }

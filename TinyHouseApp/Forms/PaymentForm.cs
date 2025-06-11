@@ -19,7 +19,7 @@ namespace TinyHouseApp.Forms
 
         private void LoadPendingReservations()
         {
-            // Sadece kiracının Onaylanmış ve Ödenmemiş rezervasyonlarını getir
+           
             var sql = @"
                 SELECT r.ReservationID,
                        h.Title,

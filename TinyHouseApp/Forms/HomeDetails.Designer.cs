@@ -237,6 +237,7 @@
             btnDecline.TabIndex = 5;
             btnDecline.Text = "Reddet";
             btnDecline.UseVisualStyleBackColor = false;
+            btnDecline.Click += btnDecline_Click;
             // 
             // btnComments
             // 

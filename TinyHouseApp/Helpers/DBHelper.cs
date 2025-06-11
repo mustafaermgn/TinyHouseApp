@@ -23,16 +23,24 @@ namespace TinyHouseApp.Helpers
             return dt;
         }
 
-        public static int ExecuteNonQuery(string sql, params SqlParameter[] pars)
+        public static int ExecuteNonQuery(string storedProcedure, params SqlParameter[] parameters)
         {
             using (var conn = new SqlConnection(connString))
-            using (var cmd = new SqlCommand(sql, conn))
+            using (var cmd = new SqlCommand(storedProcedure, conn))
             {
-                if (pars != null) cmd.Parameters.AddRange(pars);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                if (parameters != null)
+                    cmd.Parameters.AddRange(parameters);
+
                 conn.Open();
+                cmd.ExecuteNonQuery();
                 return cmd.ExecuteNonQuery();
             }
+
+
         }
+
 
         public static object ExecuteScalar(string sql, params SqlParameter[] pars)
         {

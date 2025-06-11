@@ -14,6 +14,7 @@ namespace TinyHouseApp.Forms
             InitializeComponent();
             _renterId = renterId;
             LoadAvailableHouses();
+
         }
 
         private void LoadAvailableHouses()
@@ -27,10 +28,15 @@ namespace TinyHouseApp.Forms
         private void btnReserve_Click(object sender, EventArgs e)
         {
             if (dgvHousesAvail.CurrentRow == null) return;
-            var houseId = (int)dgvHousesAvail.CurrentRow.Cells["HouseID"].Value;
+
+            var dt = (DataTable)dgvHousesAvail.DataSource;
+            var rowIndex = dgvHousesAvail.CurrentRow.Index;
+            int houseId = Convert.ToInt32(dt.Rows[rowIndex]["HouseID"]);
+
             var form = new ReservationForm(houseId, _renterId);
             form.ShowDialog();
         }
+
 
         private void btnPay_Click(object sender, EventArgs e)
         {

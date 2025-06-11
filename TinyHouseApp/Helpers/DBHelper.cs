@@ -2,7 +2,6 @@
 using System;
 using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace TinyHouseApp.Helpers
 {
@@ -13,43 +12,65 @@ namespace TinyHouseApp.Helpers
         public static DataTable GetDataTable(string sql, params SqlParameter[] pars)
         {
             var dt = new DataTable();
-            using (var conn = new SqlConnection(connString))
-            using (var cmd = new SqlCommand(sql, conn))
-            using (var da = new SqlDataAdapter(cmd))
+            try
             {
-                if (pars != null) cmd.Parameters.AddRange(pars);
-                da.Fill(dt);
+                using (var conn = new SqlConnection(connString))
+                using (var cmd = new SqlCommand(sql, conn))
+                using (var da = new SqlDataAdapter(cmd))
+                {
+                    if (pars != null) cmd.Parameters.AddRange(pars);
+                    da.Fill(dt);
+                }
+                return dt;
             }
-            return dt;
+            catch (Exception ex)
+            {
+       
+                throw new Exception("Veri çekme hatası: " + ex.Message, ex);
+            }
         }
 
-        public static int ExecuteNonQuery(string storedProcedure, params SqlParameter[] parameters)
+        public static int ExecuteNonQuery(string sql, CommandType commandType, params SqlParameter[] parameters)
         {
-            using (var conn = new SqlConnection(connString))
-            using (var cmd = new SqlCommand(storedProcedure, conn))
+            try
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                if (parameters != null)
-                    cmd.Parameters.AddRange(parameters);
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                return cmd.ExecuteNonQuery();
+                using (var conn = new SqlConnection(connString))
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.CommandType = commandType;
+                    if (parameters != null) cmd.Parameters.AddRange(parameters);
+                    conn.Open();
+                    return cmd.ExecuteNonQuery();
+                }
             }
-
-
+            catch (Exception ex)
+            {
+           
+                throw new Exception("Sorgu çalıştırma hatası: " + ex.Message, ex);
+            }
         }
 
+        public static int ExecuteNonQuery(string sql, params SqlParameter[] parameters)
+        {
+            return ExecuteNonQuery(sql, CommandType.Text, parameters);
+        }
 
         public static object ExecuteScalar(string sql, params SqlParameter[] pars)
         {
-            using (var conn = new SqlConnection(connString))
-            using (var cmd = new SqlCommand(sql, conn))
+            try
             {
-                if (pars != null) cmd.Parameters.AddRange(pars);
-                conn.Open();
-                return cmd.ExecuteScalar();
+                using (var conn = new SqlConnection(connString))
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    if (pars != null) cmd.Parameters.AddRange(pars);
+                    conn.Open();
+                    return cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+               
+                throw new Exception("Skaler değer çekme hatası: " + ex.Message, ex);
             }
         }
 
@@ -77,6 +98,5 @@ namespace TinyHouseApp.Helpers
                 new SqlParameter("@i", imageId)
             );
         }
-
     }
 }

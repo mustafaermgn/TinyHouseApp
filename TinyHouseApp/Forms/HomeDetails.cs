@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -39,7 +40,7 @@ namespace TinyHouseApp.Forms
         private void LoadComments(int ReservationID)
         {
             dgwComments.AutoGenerateColumns = false;
-            int _reservationId = ReservationID; 
+            int _reservationId = ReservationID;
             dgwComments.DataSource = DBHelper.GetDataTable(
                 "SELECT * FROM Comments WHERE ReservationID=@r",
                 new SqlParameter("@r", _reservationId)
@@ -67,29 +68,60 @@ namespace TinyHouseApp.Forms
                 return;
             }
 
+
+            var cellValue = dgwReservations.CurrentRow.Cells["reservationIDDataGridViewTextBoxColumn"].Value;
+            if (cellValue == null || cellValue == DBNull.Value)
+            {
+                MessageBox.Show("Geçersiz rezervasyon ID.");
+                return;
+            }
+
+            int reservationId = Convert.ToInt32(cellValue);
+           
+
             try
             {
-                // First try to get the value by column name
-                if (dgwReservations.CurrentRow.Cells["reservationIDDataGridViewTextBoxColumn"].Value != null)
-                {
-                    int reservationId = (int)dgwReservations.CurrentRow.Cells["reservationIDDataGridViewTextBoxColumn"].Value;
+                int affectedRows = DBHelper.ExecuteNonQuery(
+                    "UPDATE Reservations SET Status='Approved' WHERE ReservationID=@r",
+                    CommandType.Text,
+                    new SqlParameter("@r", reservationId)
+                );
 
-                    DBHelper.ExecuteNonQuery(
-                        "UPDATE Reservations SET Status='Approved' WHERE ReservationID=@r",
-                        new SqlParameter("@r", reservationId)
-                    );
+                if (affectedRows > 0)
+                {
                     MessageBox.Show("Rezervasyon onaylandı.");
-                    LoadReservaitons();
+                    LoadReservaitons(); // Listeyi yenile
                 }
-                else
-                {
-                    // If column name doesn't work, try index or find the correct column name
-                    var columnNames = dgwReservations.Columns
-                        .Cast<DataGridViewColumn>()
-                        .Select(x => x.Name)
-                        .ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message);
 
-                    MessageBox.Show($"Rezervasyon ID sütunu bulunamadı. Mevcut sütunlar: {string.Join(", ", columnNames)}");
+            }
+        }
+
+        private void btnDecline_Click(object sender, EventArgs e)
+        {
+            if (dgwReservations.CurrentRow == null)
+            {
+                MessageBox.Show("Lütfen reddedilecek bir rezervasyon seçin.");
+                return;
+            }
+
+            try
+            {
+                int reservationId = Convert.ToInt32(dgwReservations.CurrentRow.Cells["reservationIDDataGridViewTextBoxColumn"].Value);
+
+                int affectedRows = DBHelper.ExecuteNonQuery(
+                    "UPDATE Reservations SET Status='Decline' WHERE ReservationID=@r",
+                    CommandType.Text,
+                    new SqlParameter("@r", reservationId)
+                );
+
+                if (affectedRows > 0)
+                {
+                    MessageBox.Show("Rezervasyon reddedildi.");
+                    LoadReservaitons();
                 }
             }
             catch (Exception ex)
@@ -135,8 +167,6 @@ namespace TinyHouseApp.Forms
             }
         }
 
-
-
-
+     
     }
 }

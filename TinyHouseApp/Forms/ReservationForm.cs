@@ -13,6 +13,7 @@ namespace TinyHouseApp.Forms
             InitializeComponent();
             _houseId = houseId;
             _renterId = renterId;
+          
         }
 
         private void btnReserve_Click(object sender, EventArgs e)
@@ -38,7 +39,7 @@ namespace TinyHouseApp.Forms
 
         private void ReservationForm_Load(object sender, EventArgs e)
         {
-
+           
         }
     }
 }

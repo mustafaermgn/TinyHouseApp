@@ -9,11 +9,13 @@ namespace TinyHouseApp.Forms
     public partial class HostForm : Form
     {
         private int _ownerId; // Giriş yapan kullanıcının ID'si
+        private int _houseId; // Seçilen evin ID'si (varsa)
 
         public HostForm(int ownerId)
         {
             InitializeComponent();
             _ownerId = ownerId;
+          
             LoadMyHouses();
         }
 
@@ -46,6 +48,15 @@ namespace TinyHouseApp.Forms
             if (dgvHouses.CurrentRow == null) return;
             var id = (int)dgvHouses.CurrentRow.Cells["HouseID"].Value;
             DBHelper.ExecuteNonQuery("DELETE FROM Houses WHERE HouseID=@h", new SqlParameter("@h", id));
+            LoadMyHouses();
+        }
+
+        private void btnDetay_Click(object sender, EventArgs e)
+        {
+            
+            _houseId = (int)dgvHouses.CurrentRow.Cells["HouseID"].Value;
+            var form = new HomeDetails(_houseId);
+            form.ShowDialog();
             LoadMyHouses();
         }
     }

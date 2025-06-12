@@ -15,7 +15,7 @@ namespace TinyHouseApp.Forms
         {
             InitializeComponent();
             _ownerId = ownerId;
-          
+
             LoadMyHouses();
         }
 
@@ -53,11 +53,13 @@ namespace TinyHouseApp.Forms
 
         private void btnDetay_Click(object sender, EventArgs e)
         {
-            
+
             _houseId = (int)dgvHouses.CurrentRow.Cells["HouseID"].Value;
             var form = new HomeDetails(_houseId);
             form.ShowDialog();
             LoadMyHouses();
         }
+
+       
     }
 }

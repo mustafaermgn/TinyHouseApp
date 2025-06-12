@@ -29,7 +29,7 @@ namespace TinyHouseApp.Forms
                 JOIN Houses h ON r.HouseID = h.HouseID
                 WHERE 
                     r.RenterID = @rid
-                    AND r.Status = 'Completed'
+                    AND r.Status = 'Approved'
                     AND NOT EXISTS (
                         SELECT 1 FROM Comments c 
                         WHERE c.ReservationID = r.ReservationID 
@@ -46,38 +46,38 @@ namespace TinyHouseApp.Forms
         {
             if (dgvReservations.CurrentRow == null)
             {
-                MessageBox.Show("Önce bir rezervasyon seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Lütfen bir rezervasyon seçin");
                 return;
             }
 
-            int reservationId = (int)dgvReservations.CurrentRow.Cells["ReservationID"].Value;
-            int rating = (int)numRating.Value;
-            string text = txtComment.Text.Trim();
-
-            if (string.IsNullOrEmpty(text))
+            if (string.IsNullOrWhiteSpace(txtComment.Text))
             {
-                MessageBox.Show("Lütfen yorum metni girin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Yorum metni boş olamaz");
                 return;
             }
 
             try
             {
-                DBHelper.ExecuteNonQuery(
-                    "sp_AddComment",
-                    new SqlParameter("@ReservationID", reservationId),
-                    new SqlParameter("@RenterID", _renterId),
-                    new SqlParameter("@Rating", rating),
-                    new SqlParameter("@CommentText", text)
+                int reservationId = Convert.ToInt32(dgvReservations.CurrentRow.Cells["ReservationID"].Value);
+                int rating = (int)numRating.Value; // Rating değerini al
+
+                int result = DBHelper.AddComment(
+                    reservationId,
+                    txtComment.Text.Trim(),
+                    _renterId,
+                    rating
                 );
 
-                MessageBox.Show("Yorumunuz kaydedildi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadPendingComments();
-                txtComment.Clear();
-                numRating.Value = 1;
+                if (result > 0)
+                {
+                    MessageBox.Show("Yorum ve puan başarıyla eklendi");
+                    txtComment.Clear();
+                    LoadPendingComments();
+                }
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Yorum eklenirken hata oluştu: " + ex.Message);
             }
         }
     }

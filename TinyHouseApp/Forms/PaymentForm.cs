@@ -46,24 +46,39 @@ namespace TinyHouseApp.Forms
                 return;
             }
 
-            var reservationId = (int)dgvReservations.CurrentRow.Cells["ReservationID"].Value;
-            var amount = (decimal)dgvReservations.CurrentRow.Cells["TotalAmount"].Value;
-
             try
             {
-                // Ödeme kaydı ekle, trigger ile Reservation da güncellenecek
-                DBHelper.ExecuteNonQuery(
+                var reservationId = (int)dgvReservations.CurrentRow.Cells["ReservationID"].Value;
+                var amount = (decimal)dgvReservations.CurrentRow.Cells["TotalAmount"].Value;
+
+                // Ödeme işlemi
+                int result = DBHelper.ExecuteNonQuery(
                     "INSERT INTO Payments(ReservationID, Amount, IsPaid) VALUES(@rid,@amt,1)",
+                    CommandType.Text, // Açıkça CommandType.Text belirtiyoruz
                     new SqlParameter("@rid", reservationId),
                     new SqlParameter("@amt", amount)
                 );
 
-                MessageBox.Show("Ödeme başarılı, rezervasyon onaylandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadPendingReservations();
+                // Rezervasyon durumunu güncelle
+                if (result > 0)
+                {
+                    DBHelper.ExecuteNonQuery(
+                        "UPDATE Reservations SET PaymentStatus = 'Paid' WHERE ReservationID = @rid",
+                        CommandType.Text,
+                        new SqlParameter("@rid", reservationId)
+                    );
+
+                    MessageBox.Show("Ödeme başarılı, rezervasyon onaylandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadPendingReservations();
+                }
             }
             catch (SqlException ex)
             {
-                MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ödeme işlemi sırasında hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Beklenmeyen hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

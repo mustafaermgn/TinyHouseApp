@@ -52,7 +52,7 @@ namespace TinyHouseApp.Helpers
 
         public static int ExecuteNonQuery(string sql, params SqlParameter[] parameters)
         {
-            return ExecuteNonQuery(sql, CommandType.Text, parameters);
+            return ExecuteNonQuery(sql, CommandType.StoredProcedure, parameters);
         }
 
         public static object ExecuteScalar(string sql, params SqlParameter[] pars)
@@ -88,6 +88,18 @@ namespace TinyHouseApp.Helpers
                 "INSERT INTO HouseImages(HouseID,ImagePath) VALUES(@h,@p)",
                 new SqlParameter("@h", houseId),
                 new SqlParameter("@p", path)
+            );
+        }
+        public static int AddComment(int reservationId, string commentText,int renterId,int rating)
+        {
+            return ExecuteNonQuery(
+                "sp_AddComment",
+                CommandType.StoredProcedure,
+                new SqlParameter("@ReservationID", reservationId),
+                new SqlParameter("@CommentText", commentText),
+                new SqlParameter("@RenterID", renterId),
+                new SqlParameter("@Rating", rating)
+
             );
         }
 

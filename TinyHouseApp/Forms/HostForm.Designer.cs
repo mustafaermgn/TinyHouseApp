@@ -20,9 +20,9 @@
 
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             dgvHouses = new DataGridView();
             btnAddHouse = new Button();
             btnEditHouse = new Button();
@@ -30,8 +30,8 @@
             panelHeader = new Panel();
             lblHeader = new Label();
             panelControls = new Panel();
-            panelGrid = new Panel();
             btnDetay = new Button();
+            panelGrid = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvHouses).BeginInit();
             panelHeader.SuspendLayout();
             panelControls.SuspendLayout();
@@ -47,24 +47,24 @@
             dgvHouses.BorderStyle = BorderStyle.None;
             dgvHouses.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvHouses.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.Padding = new Padding(0, 5, 0, 5);
-            dataGridViewCellStyle1.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvHouses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.Padding = new Padding(0, 5, 0, 5);
+            dataGridViewCellStyle4.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvHouses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvHouses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvHouses.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dgvHouses.DefaultCellStyle = dataGridViewCellStyle5;
             dgvHouses.Dock = DockStyle.Fill;
             dgvHouses.EnableHeadersVisualStyles = false;
             dgvHouses.GridColor = Color.Gainsboro;
@@ -72,18 +72,18 @@
             dgvHouses.Name = "dgvHouses";
             dgvHouses.ReadOnly = true;
             dgvHouses.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvHouses.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgvHouses.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvHouses.RowHeadersWidth = 62;
             dgvHouses.RowTemplate.Height = 30;
             dgvHouses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvHouses.Size = new Size(694, 501);
+            dgvHouses.Size = new Size(866, 540);
             dgvHouses.TabIndex = 0;
             // 
             // btnAddHouse
@@ -144,7 +144,7 @@
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
-            panelHeader.Size = new Size(894, 60);
+            panelHeader.Size = new Size(1060, 74);
             panelHeader.TabIndex = 4;
             // 
             // lblHeader
@@ -152,7 +152,7 @@
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 162);
             lblHeader.ForeColor = Color.White;
-            lblHeader.Location = new Point(20, 18);
+            lblHeader.Location = new Point(12, 19);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(165, 38);
             lblHeader.TabIndex = 0;
@@ -166,19 +166,10 @@
             panelControls.Controls.Add(btnEditHouse);
             panelControls.Controls.Add(btnDeleteHouse);
             panelControls.Dock = DockStyle.Right;
-            panelControls.Location = new Point(694, 60);
+            panelControls.Location = new Point(866, 74);
             panelControls.Name = "panelControls";
-            panelControls.Size = new Size(200, 501);
+            panelControls.Size = new Size(194, 540);
             panelControls.TabIndex = 5;
-            // 
-            // panelGrid
-            // 
-            panelGrid.Controls.Add(dgvHouses);
-            panelGrid.Dock = DockStyle.Fill;
-            panelGrid.Location = new Point(0, 60);
-            panelGrid.Name = "panelGrid";
-            panelGrid.Size = new Size(694, 501);
-            panelGrid.TabIndex = 6;
             // 
             // btnDetay
             // 
@@ -191,10 +182,19 @@
             btnDetay.UseVisualStyleBackColor = false;
             btnDetay.Click += btnDetay_Click;
             // 
+            // panelGrid
+            // 
+            panelGrid.Controls.Add(dgvHouses);
+            panelGrid.Dock = DockStyle.Fill;
+            panelGrid.Location = new Point(0, 74);
+            panelGrid.Name = "panelGrid";
+            panelGrid.Size = new Size(866, 540);
+            panelGrid.TabIndex = 6;
+            // 
             // HostForm
             // 
             BackColor = Color.White;
-            ClientSize = new Size(894, 561);
+            ClientSize = new Size(1060, 614);
             Controls.Add(panelGrid);
             Controls.Add(panelControls);
             Controls.Add(panelHeader);

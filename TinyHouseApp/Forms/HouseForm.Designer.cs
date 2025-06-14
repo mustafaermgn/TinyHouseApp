@@ -26,6 +26,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HouseForm));
             lblTitle = new Label();
             txtTitle = new TextBox();
             lblDesc = new Label();
@@ -39,19 +40,21 @@
             panelHeader = new Panel();
             lblHeader = new Label();
             panelForm = new Panel();
+            pictureBox1 = new PictureBox();
             panelFooter = new Panel();
             ((System.ComponentModel.ISupportInitialize)numPrice).BeginInit();
             panelHeader.SuspendLayout();
             panelForm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            lblTitle.Location = new Point(259, 70);
+            lblTitle.Location = new Point(247, 67);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(43, 17);
+            lblTitle.Size = new Size(56, 23);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Başlık:";
             // 
@@ -61,16 +64,16 @@
             txtTitle.Font = new Font("Segoe UI", 9.75F);
             txtTitle.Location = new Point(359, 67);
             txtTitle.Name = "txtTitle";
-            txtTitle.Size = new Size(300, 25);
+            txtTitle.Size = new Size(300, 29);
             txtTitle.TabIndex = 1;
             // 
             // lblDesc
             // 
             lblDesc.AutoSize = true;
             lblDesc.Font = new Font("Segoe UI", 9.75F);
-            lblDesc.Location = new Point(259, 110);
+            lblDesc.Location = new Point(247, 109);
             lblDesc.Name = "lblDesc";
-            lblDesc.Size = new Size(62, 17);
+            lblDesc.Size = new Size(82, 23);
             lblDesc.TabIndex = 2;
             lblDesc.Text = "Açıklama:";
             // 
@@ -89,9 +92,9 @@
             // 
             lblPrice.AutoSize = true;
             lblPrice.Font = new Font("Segoe UI", 9.75F);
-            lblPrice.Location = new Point(259, 230);
+            lblPrice.Location = new Point(247, 230);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(83, 17);
+            lblPrice.Size = new Size(110, 23);
             lblPrice.TabIndex = 4;
             lblPrice.Text = "Fiyat/Gecelik:";
             // 
@@ -100,19 +103,19 @@
             numPrice.BorderStyle = BorderStyle.FixedSingle;
             numPrice.DecimalPlaces = 2;
             numPrice.Font = new Font("Segoe UI", 9.75F);
-            numPrice.Location = new Point(359, 228);
+            numPrice.Location = new Point(363, 228);
             numPrice.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numPrice.Name = "numPrice";
-            numPrice.Size = new Size(120, 25);
+            numPrice.Size = new Size(120, 29);
             numPrice.TabIndex = 5;
             // 
             // lblLocation
             // 
             lblLocation.AutoSize = true;
             lblLocation.Font = new Font("Segoe UI", 9.75F);
-            lblLocation.Location = new Point(259, 270);
+            lblLocation.Location = new Point(247, 269);
             lblLocation.Name = "lblLocation";
-            lblLocation.Size = new Size(52, 17);
+            lblLocation.Size = new Size(69, 23);
             lblLocation.TabIndex = 6;
             lblLocation.Text = "Konum:";
             // 
@@ -122,7 +125,7 @@
             txtLocation.Font = new Font("Segoe UI", 9.75F);
             txtLocation.Location = new Point(359, 267);
             txtLocation.Name = "txtLocation";
-            txtLocation.Size = new Size(300, 25);
+            txtLocation.Size = new Size(300, 29);
             txtLocation.TabIndex = 7;
             // 
             // chkActive
@@ -131,7 +134,7 @@
             chkActive.Font = new Font("Segoe UI", 9.75F);
             chkActive.Location = new Point(561, 313);
             chkActive.Name = "chkActive";
-            chkActive.Size = new Size(76, 21);
+            chkActive.Size = new Size(98, 27);
             chkActive.TabIndex = 8;
             chkActive.Text = "Aktif mi?";
             chkActive.CheckedChanged += chkActive_CheckedChanged;
@@ -170,7 +173,7 @@
             lblHeader.ForeColor = Color.White;
             lblHeader.Location = new Point(20, 18);
             lblHeader.Name = "lblHeader";
-            lblHeader.Size = new Size(104, 25);
+            lblHeader.Size = new Size(135, 32);
             lblHeader.TabIndex = 0;
             lblHeader.Text = "Ev Bilgileri";
             // 
@@ -187,12 +190,22 @@
             panelForm.Controls.Add(lblLocation);
             panelForm.Controls.Add(txtLocation);
             panelForm.Controls.Add(chkActive);
+            panelForm.Controls.Add(pictureBox1);
             panelForm.Dock = DockStyle.Fill;
             panelForm.Location = new Point(0, 60);
             panelForm.Name = "panelForm";
             panelForm.Padding = new Padding(20);
             panelForm.Size = new Size(892, 408);
             panelForm.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(-51, -232);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1035, 836);
+            pictureBox1.TabIndex = 9;
+            pictureBox1.TabStop = false;
             // 
             // panelFooter
             // 
@@ -202,6 +215,7 @@
             panelFooter.Name = "panelFooter";
             panelFooter.Size = new Size(892, 70);
             panelFooter.TabIndex = 1;
+            panelFooter.Paint += panelFooter_Paint;
             // 
             // HouseForm
             // 
@@ -220,7 +234,9 @@
             panelHeader.PerformLayout();
             panelForm.ResumeLayout(false);
             panelForm.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
+        private PictureBox pictureBox1;
     }
 }

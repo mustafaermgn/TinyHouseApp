@@ -20,9 +20,10 @@
 
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HostForm));
             dgvHouses = new DataGridView();
             btnAddHouse = new Button();
             btnEditHouse = new Button();
@@ -32,10 +33,16 @@
             panelControls = new Panel();
             btnDetay = new Button();
             panelGrid = new Panel();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            pictureBox3 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvHouses).BeginInit();
             panelHeader.SuspendLayout();
             panelControls.SuspendLayout();
             panelGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // dgvHouses
@@ -47,24 +54,24 @@
             dgvHouses.BorderStyle = BorderStyle.None;
             dgvHouses.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvHouses.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle4.ForeColor = Color.White;
-            dataGridViewCellStyle4.Padding = new Padding(0, 5, 0, 5);
-            dataGridViewCellStyle4.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvHouses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.Padding = new Padding(0, 5, 0, 5);
+            dataGridViewCellStyle1.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvHouses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvHouses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvHouses.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvHouses.DefaultCellStyle = dataGridViewCellStyle2;
             dgvHouses.Dock = DockStyle.Fill;
             dgvHouses.EnableHeadersVisualStyles = false;
             dgvHouses.GridColor = Color.Gainsboro;
@@ -72,14 +79,14 @@
             dgvHouses.Name = "dgvHouses";
             dgvHouses.ReadOnly = true;
             dgvHouses.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgvHouses.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvHouses.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvHouses.RowHeadersWidth = 62;
             dgvHouses.RowTemplate.Height = 30;
             dgvHouses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -154,7 +161,7 @@
             lblHeader.ForeColor = Color.White;
             lblHeader.Location = new Point(12, 19);
             lblHeader.Name = "lblHeader";
-            lblHeader.Size = new Size(165, 38);
+            lblHeader.Size = new Size(143, 32);
             lblHeader.TabIndex = 0;
             lblHeader.Text = "Host Paneli";
             // 
@@ -165,6 +172,8 @@
             panelControls.Controls.Add(btnAddHouse);
             panelControls.Controls.Add(btnEditHouse);
             panelControls.Controls.Add(btnDeleteHouse);
+            panelControls.Controls.Add(pictureBox2);
+            panelControls.Controls.Add(pictureBox3);
             panelControls.Dock = DockStyle.Right;
             panelControls.Location = new Point(866, 74);
             panelControls.Name = "panelControls";
@@ -185,11 +194,40 @@
             // panelGrid
             // 
             panelGrid.Controls.Add(dgvHouses);
+            panelGrid.Controls.Add(pictureBox1);
             panelGrid.Dock = DockStyle.Fill;
             panelGrid.Location = new Point(0, 74);
             panelGrid.Name = "panelGrid";
             panelGrid.Size = new Size(866, 540);
             panelGrid.TabIndex = 6;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(515, 49);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(662, 392);
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(0, 158);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(245, 406);
+            pictureBox2.TabIndex = 5;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(0, -2);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(228, 167);
+            pictureBox3.TabIndex = 6;
+            pictureBox3.TabStop = false;
             // 
             // HostForm
             // 
@@ -208,8 +246,14 @@
             panelHeader.PerformLayout();
             panelControls.ResumeLayout(false);
             panelGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
         }
         private Button btnDetay;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox3;
     }
 }

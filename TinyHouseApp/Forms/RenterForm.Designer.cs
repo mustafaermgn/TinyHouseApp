@@ -17,11 +17,14 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RenterForm));
             dgvHousesAvail = new DataGridView();
             btnReserve = new Button();
             btnPay = new Button();
             btnComment = new Button();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvHousesAvail).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dgvHousesAvail
@@ -30,7 +33,7 @@
             dgvHousesAvail.AllowUserToDeleteRows = false;
             dgvHousesAvail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvHousesAvail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvHousesAvail.BackgroundColor = Color.White;
+            dgvHousesAvail.BackgroundColor = Color.LightGray;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(240, 240, 240);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
@@ -43,13 +46,15 @@
             dgvHousesAvail.EnableHeadersVisualStyles = false;
             dgvHousesAvail.Font = new Font("Segoe UI", 9F);
             dgvHousesAvail.GridColor = Color.LightGray;
-            dgvHousesAvail.Location = new Point(12, 12);
+            dgvHousesAvail.Location = new Point(14, 16);
+            dgvHousesAvail.Margin = new Padding(3, 4, 3, 4);
             dgvHousesAvail.MultiSelect = false;
             dgvHousesAvail.Name = "dgvHousesAvail";
             dgvHousesAvail.ReadOnly = true;
+            dgvHousesAvail.RowHeadersWidth = 51;
             dgvHousesAvail.RowTemplate.Height = 30;
             dgvHousesAvail.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvHousesAvail.Size = new Size(711, 506);
+            dgvHousesAvail.Size = new Size(813, 675);
             dgvHousesAvail.TabIndex = 0;
             // 
             // btnReserve
@@ -59,9 +64,10 @@
             btnReserve.FlatStyle = FlatStyle.Flat;
             btnReserve.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnReserve.ForeColor = Color.White;
-            btnReserve.Location = new Point(741, 130);
+            btnReserve.Location = new Point(847, 173);
+            btnReserve.Margin = new Padding(3, 4, 3, 4);
             btnReserve.Name = "btnReserve";
-            btnReserve.Size = new Size(130, 40);
+            btnReserve.Size = new Size(149, 53);
             btnReserve.TabIndex = 1;
             btnReserve.Text = "Rezervasyon Yap";
             btnReserve.UseVisualStyleBackColor = false;
@@ -74,9 +80,10 @@
             btnPay.FlatStyle = FlatStyle.Flat;
             btnPay.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnPay.ForeColor = Color.White;
-            btnPay.Location = new Point(741, 190);
+            btnPay.Location = new Point(847, 253);
+            btnPay.Margin = new Padding(3, 4, 3, 4);
             btnPay.Name = "btnPay";
-            btnPay.Size = new Size(130, 40);
+            btnPay.Size = new Size(149, 53);
             btnPay.TabIndex = 2;
             btnPay.Text = "Ödeme Yap";
             btnPay.UseVisualStyleBackColor = false;
@@ -89,31 +96,44 @@
             btnComment.FlatStyle = FlatStyle.Flat;
             btnComment.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnComment.ForeColor = Color.Black;
-            btnComment.Location = new Point(741, 250);
+            btnComment.Location = new Point(847, 333);
+            btnComment.Margin = new Padding(3, 4, 3, 4);
             btnComment.Name = "btnComment";
-            btnComment.Size = new Size(130, 40);
+            btnComment.Size = new Size(149, 53);
             btnComment.TabIndex = 3;
             btnComment.Text = "Yorum Yap";
             btnComment.UseVisualStyleBackColor = false;
             btnComment.Click += btnComment_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(-111, -25);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1207, 798);
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
             // RenterForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(891, 536);
+            ClientSize = new Size(1018, 715);
             Controls.Add(btnComment);
             Controls.Add(btnPay);
             Controls.Add(btnReserve);
             Controls.Add(dgvHousesAvail);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(3, 4, 3, 4);
             MaximizeBox = false;
             Name = "RenterForm";
             Text = "Kiracı Paneli";
             ((System.ComponentModel.ISupportInitialize)dgvHousesAvail).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
-
+        private PictureBox pictureBox1;
     }
 }

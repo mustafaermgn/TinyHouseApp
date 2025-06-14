@@ -24,18 +24,17 @@ namespace TinyHouseApp.Forms
 
             try
             {
-                // Parametre değerlerini kontrol et
+              
                 if (_houseId <= 0 || _renterId <= 0)
                 {
                     MessageBox.Show("Geçersiz ev veya kullanıcı bilgisi");
                     return;
                 }
 
-                // Debug bilgisi
                 Console.WriteLine($"HouseID: {_houseId}, RenterID: {_renterId}, Start: {sd}, End: {ed}");
 
                 int result = DBHelper.ExecuteNonQuery("sp_CreateReservation",
-                    CommandType.StoredProcedure, // Açıkça belirt
+                    CommandType.StoredProcedure,
                     new SqlParameter("@HouseID", _houseId),
                     new SqlParameter("@RenterID", _renterId),
                     new SqlParameter("@StartDate", sd),

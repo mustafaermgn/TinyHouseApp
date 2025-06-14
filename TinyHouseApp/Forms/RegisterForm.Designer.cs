@@ -23,6 +23,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             lblFirstName = new Label();
             txtFirstName = new TextBox();
             lblLastName = new Label();
@@ -34,79 +35,82 @@
             lblRole = new Label();
             comboRole = new ComboBox();
             btnRegister = new Button();
+            pictureBox1 = new PictureBox();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lblFirstName
             // 
             lblFirstName.AutoSize = true;
-            lblFirstName.Location = new Point(223, 123);
+            lblFirstName.Location = new Point(223, 139);
             lblFirstName.Name = "lblFirstName";
-            lblFirstName.Size = new Size(29, 19);
+            lblFirstName.Size = new Size(35, 23);
             lblFirstName.TabIndex = 0;
             lblFirstName.Text = "Ad:";
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(303, 120);
+            txtFirstName.Location = new Point(303, 136);
             txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(300, 25);
+            txtFirstName.Size = new Size(300, 30);
             txtFirstName.TabIndex = 0;
             // 
             // lblLastName
             // 
             lblLastName.AutoSize = true;
-            lblLastName.Location = new Point(223, 168);
+            lblLastName.Location = new Point(223, 192);
             lblLastName.Name = "lblLastName";
-            lblLastName.Size = new Size(49, 19);
+            lblLastName.Size = new Size(60, 23);
             lblLastName.TabIndex = 1;
             lblLastName.Text = "Soyad:";
             // 
             // txtLastName
             // 
-            txtLastName.Location = new Point(303, 165);
+            txtLastName.Location = new Point(303, 189);
             txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(300, 25);
+            txtLastName.Size = new Size(300, 30);
             txtLastName.TabIndex = 1;
             // 
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(223, 213);
+            lblEmail.Location = new Point(223, 238);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(59, 19);
+            lblEmail.Size = new Size(72, 23);
             lblEmail.TabIndex = 2;
             lblEmail.Text = "E-posta:";
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(303, 210);
+            txtEmail.Location = new Point(303, 238);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(300, 25);
+            txtEmail.Size = new Size(300, 30);
             txtEmail.TabIndex = 2;
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(223, 258);
+            lblPassword.Location = new Point(223, 288);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(38, 19);
+            lblPassword.Size = new Size(47, 23);
             lblPassword.TabIndex = 3;
             lblPassword.Text = "Şifre:";
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(303, 255);
+            txtPassword.Location = new Point(303, 288);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '●';
-            txtPassword.Size = new Size(300, 25);
+            txtPassword.Size = new Size(300, 30);
             txtPassword.TabIndex = 3;
             // 
             // lblRole
             // 
             lblRole.AutoSize = true;
-            lblRole.Location = new Point(223, 303);
+            lblRole.Location = new Point(223, 338);
             lblRole.Name = "lblRole";
-            lblRole.Size = new Size(31, 19);
+            lblRole.Size = new Size(38, 23);
             lblRole.TabIndex = 4;
             lblRole.Text = "Rol:";
             // 
@@ -114,9 +118,9 @@
             // 
             comboRole.DropDownStyle = ComboBoxStyle.DropDownList;
             comboRole.Items.AddRange(new object[] { "Kullanıcı", "Yönetici" });
-            comboRole.Location = new Point(303, 300);
+            comboRole.Location = new Point(303, 338);
             comboRole.Name = "comboRole";
-            comboRole.Size = new Size(300, 25);
+            comboRole.Size = new Size(300, 31);
             comboRole.TabIndex = 4;
             // 
             // btnRegister
@@ -125,7 +129,7 @@
             btnRegister.FlatStyle = FlatStyle.Flat;
             btnRegister.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnRegister.ForeColor = Color.White;
-            btnRegister.Location = new Point(303, 353);
+            btnRegister.Location = new Point(303, 388);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(300, 35);
             btnRegister.TabIndex = 5;
@@ -133,10 +137,33 @@
             btnRegister.UseVisualStyleBackColor = false;
             btnRegister.Click += btnRegister_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(-292, -376);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(2560, 1709);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.FromArgb(192, 255, 255);
+            label1.Font = new Font("Lucida Console", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            label1.Location = new Point(101, 43);
+            label1.Name = "label1";
+            label1.Size = new Size(735, 34);
+            label1.TabIndex = 7;
+            label1.Text = "HEMEN KAYIT OL! SEN DE ARAMIZA KATIL";
+            label1.Click += label1_Click;
+            // 
             // RegisterForm
             // 
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(894, 537);
+            Controls.Add(label1);
             Controls.Add(lblFirstName);
             Controls.Add(txtFirstName);
             Controls.Add(lblLastName);
@@ -148,15 +175,18 @@
             Controls.Add(lblRole);
             Controls.Add(comboRole);
             Controls.Add(btnRegister);
+            Controls.Add(pictureBox1);
             Font = new Font("Segoe UI", 10F);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             Name = "RegisterForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Kayıt Ol";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
-
+        private PictureBox pictureBox1;
+        private Label label1;
     }
 }

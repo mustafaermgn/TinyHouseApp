@@ -17,7 +17,7 @@ namespace TinyHouseApp.Forms
 
         private void LoadAllTabs()
         {
-            // her sekmeye veri yükle
+           
             dgvRoles.DataSource = DBHelper.GetDataTable("SELECT * FROM Roles");
             dgvUsers.DataSource = DBHelper.GetDataTable("SELECT u.UserID, u.FirstName, u.LastName, u.Email, r.RoleName, u.IsActive FROM Users u JOIN Roles r ON u.RoleID=r.RoleID");
             dgvHouses.DataSource = DBHelper.GetDataTable("SELECT * FROM Houses");
@@ -25,8 +25,7 @@ namespace TinyHouseApp.Forms
             dgvComments.DataSource = DBHelper.GetDataTable("SELECT * FROM Comments");
         }
 
-        // TODO: Her grid için CRUD buton kodlarını ekle: Insert / Update / Delete
-        // Örnek rol ekleme:
+      
         private void btnAddRole_Click(object sender, EventArgs e)
         {
             var name = txtRoleName.Text.Trim();

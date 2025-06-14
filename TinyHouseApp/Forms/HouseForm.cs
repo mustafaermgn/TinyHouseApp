@@ -80,5 +80,10 @@ namespace TinyHouseApp.Forms
         {
 
         }
+
+        private void panelFooter_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

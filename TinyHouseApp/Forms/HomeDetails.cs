@@ -56,7 +56,7 @@ namespace TinyHouseApp.Forms
             LoadReservaitons();
             dgwReservations.AutoGenerateColumns = true;
 
-            //LoadHouseImages();
+         
         }
 
 
@@ -90,7 +90,7 @@ namespace TinyHouseApp.Forms
                 if (affectedRows > 0)
                 {
                     MessageBox.Show("Rezervasyon onaylandı.");
-                    LoadReservaitons(); // Listeyi yenile
+                    LoadReservaitons();
                 }
             }
             catch (Exception ex)

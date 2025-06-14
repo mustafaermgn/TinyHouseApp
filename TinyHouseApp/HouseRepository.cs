@@ -24,7 +24,7 @@ public class HouseRepository
                 {
                     cmd.Parameters.Add("@Title", SqlDbType.NVarChar).Value = house.Title;
                     cmd.Parameters.Add("@Description", SqlDbType.NVarChar).Value = house.Description ?? (object)DBNull.Value;
-                   // cmd.Parameters.Add("@ImageData", SqlDbType.VarBinary).Value = house.ImageData ?? (object)DBNull.Value;
+                  
 
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -57,7 +57,7 @@ public class HouseRepository
                             HouseID = reader.GetInt32(0),
                             Title = reader.GetString(1),
                             Description = reader.IsDBNull(2) ? null : reader.GetString(2),
-                          //  ImageData = reader.IsDBNull(3) ? null : (byte[])reader[3]
+                         
                         });
                     }
                 }

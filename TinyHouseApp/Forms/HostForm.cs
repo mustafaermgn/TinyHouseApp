@@ -8,8 +8,8 @@ namespace TinyHouseApp.Forms
 {
     public partial class HostForm : Form
     {
-        private int _ownerId; // Giriş yapan kullanıcının ID'si
-        private int _houseId; // Seçilen evin ID'si (varsa)
+        private int _ownerId; 
+        private int _houseId; 
 
         public HostForm(int ownerId)
         {
@@ -60,6 +60,9 @@ namespace TinyHouseApp.Forms
             LoadMyHouses();
         }
 
-       
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

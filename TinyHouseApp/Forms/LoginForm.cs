@@ -41,19 +41,19 @@ namespace TinyHouseApp.Forms
                 return;
             }
 
-            // Giriş yapan kullanıcının ID'sini al
+           
             int userId = (int)dt.Rows[0]["UserID"];
 
             this.Hide();
             switch (roleId)
             {
-                case 1: // Admin
+                case 1:
                     new AdminForm().Show();
                     break;
-                case 2: // Host
+                case 2: 
                     new HostForm(userId).Show();
                     break;
-                case 3: // Renter
+                case 3: 
                     new RenterForm(userId).Show();
                     break;
                 default:
@@ -67,6 +67,11 @@ namespace TinyHouseApp.Forms
         {
             using var regForm = new RegisterForm();
             regForm.ShowDialog();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

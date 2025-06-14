@@ -24,6 +24,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommentForm));
             dgvReservations = new DataGridView();
             lblRating = new Label();
             numRating = new NumericUpDown();
@@ -33,10 +34,12 @@
             panelHeader = new Panel();
             lblHeader = new Label();
             panelForm = new Panel();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvReservations).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numRating).BeginInit();
             panelHeader.SuspendLayout();
             panelForm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dgvReservations
@@ -94,7 +97,7 @@
             lblRating.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
             lblRating.Location = new Point(20, 290);
             lblRating.Name = "lblRating";
-            lblRating.Size = new Size(106, 28);
+            lblRating.Size = new Size(93, 23);
             lblRating.TabIndex = 1;
             lblRating.Text = "Puan (1-5):";
             // 
@@ -106,7 +109,7 @@
             numRating.Maximum = new decimal(new int[] { 5, 0, 0, 0 });
             numRating.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numRating.Name = "numRating";
-            numRating.Size = new Size(60, 33);
+            numRating.Size = new Size(60, 29);
             numRating.TabIndex = 2;
             numRating.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
@@ -116,7 +119,7 @@
             lblComment.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
             lblComment.Location = new Point(20, 330);
             lblComment.Name = "lblComment";
-            lblComment.Size = new Size(72, 28);
+            lblComment.Size = new Size(63, 23);
             lblComment.TabIndex = 3;
             lblComment.Text = "Yorum:";
             // 
@@ -165,7 +168,7 @@
             lblHeader.ForeColor = Color.White;
             lblHeader.Location = new Point(20, 18);
             lblHeader.Name = "lblHeader";
-            lblHeader.Size = new Size(156, 38);
+            lblHeader.Size = new Size(137, 32);
             lblHeader.TabIndex = 0;
             lblHeader.Text = "Yorum Yap";
             // 
@@ -178,6 +181,7 @@
             panelForm.Controls.Add(lblComment);
             panelForm.Controls.Add(txtComment);
             panelForm.Controls.Add(btnAddComment);
+            panelForm.Controls.Add(pictureBox1);
             panelForm.Dock = DockStyle.Fill;
             panelForm.Location = new Point(0, 60);
             panelForm.Name = "panelForm";
@@ -185,9 +189,19 @@
             panelForm.Size = new Size(895, 560);
             panelForm.TabIndex = 7;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(-108, -107);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1193, 760);
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
             // CommentForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(895, 620);
@@ -206,7 +220,9 @@
             panelHeader.PerformLayout();
             panelForm.ResumeLayout(false);
             panelForm.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
+        private PictureBox pictureBox1;
     }
 }

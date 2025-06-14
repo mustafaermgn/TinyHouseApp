@@ -59,7 +59,7 @@ namespace TinyHouseApp.Forms
             try
             {
                 int reservationId = Convert.ToInt32(dgvReservations.CurrentRow.Cells["ReservationID"].Value);
-                int rating = (int)numRating.Value; // Rating değerini al
+                int rating = (int)numRating.Value; 
 
                 int result = DBHelper.AddComment(
                     reservationId,
@@ -79,6 +79,11 @@ namespace TinyHouseApp.Forms
             {
                 MessageBox.Show("Yorum eklenirken hata oluştu: " + ex.Message);
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

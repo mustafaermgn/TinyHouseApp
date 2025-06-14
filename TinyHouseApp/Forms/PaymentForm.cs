@@ -51,15 +51,15 @@ namespace TinyHouseApp.Forms
                 var reservationId = (int)dgvReservations.CurrentRow.Cells["ReservationID"].Value;
                 var amount = (decimal)dgvReservations.CurrentRow.Cells["TotalAmount"].Value;
 
-                // Ödeme işlemi
+                
                 int result = DBHelper.ExecuteNonQuery(
                     "INSERT INTO Payments(ReservationID, Amount, IsPaid) VALUES(@rid,@amt,1)",
-                    CommandType.Text, // Açıkça CommandType.Text belirtiyoruz
+                    CommandType.Text, 
                     new SqlParameter("@rid", reservationId),
                     new SqlParameter("@amt", amount)
                 );
 
-                // Rezervasyon durumunu güncelle
+                
                 if (result > 0)
                 {
                     DBHelper.ExecuteNonQuery(

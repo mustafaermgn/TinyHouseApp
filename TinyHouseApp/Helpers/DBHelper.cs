@@ -25,7 +25,6 @@ namespace TinyHouseApp.Helpers
             }
             catch (Exception ex)
             {
-       
                 throw new Exception("Veri çekme hatası: " + ex.Message, ex);
             }
         }
@@ -45,14 +44,14 @@ namespace TinyHouseApp.Helpers
             }
             catch (Exception ex)
             {
-           
                 throw new Exception("Sorgu çalıştırma hatası: " + ex.Message, ex);
             }
         }
 
+        
         public static int ExecuteNonQuery(string sql, params SqlParameter[] parameters)
         {
-            return ExecuteNonQuery(sql, CommandType.StoredProcedure, parameters);
+            return ExecuteNonQuery(sql, CommandType.Text, parameters);
         }
 
         public static object ExecuteScalar(string sql, params SqlParameter[] pars)
@@ -69,7 +68,6 @@ namespace TinyHouseApp.Helpers
             }
             catch (Exception ex)
             {
-               
                 throw new Exception("Skaler değer çekme hatası: " + ex.Message, ex);
             }
         }
@@ -90,17 +88,18 @@ namespace TinyHouseApp.Helpers
                 new SqlParameter("@p", path)
             );
         }
-        public static int AddComment(int reservationId, string commentText,int renterId,int rating)
+
+        public static int AddComment(int reservationId, string commentText, int renterId, int rating)
         {
-            return ExecuteNonQuery(
-                "sp_AddComment",
-                CommandType.StoredProcedure,
+          return ExecuteNonQuery(
+                "INSERT INTO Comments(ReservationID, CommentText, RenterID, Rating, CommentDate) " +
+                "VALUES(@ReservationID, @CommentText, @RenterID, @Rating, GETDATE())",
                 new SqlParameter("@ReservationID", reservationId),
                 new SqlParameter("@CommentText", commentText),
                 new SqlParameter("@RenterID", renterId),
                 new SqlParameter("@Rating", rating)
-
             );
+           
         }
 
         public static int DeleteHouseImage(int imageId)

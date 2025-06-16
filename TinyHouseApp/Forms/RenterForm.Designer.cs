@@ -7,7 +7,6 @@
         private System.Windows.Forms.Button btnReserve;
         private System.Windows.Forms.Button btnPay;
         private System.Windows.Forms.Button btnComment;
-        private System.Windows.Forms.PictureBox pbHouseImage;
 
         protected override void Dispose(bool disposing)
         {

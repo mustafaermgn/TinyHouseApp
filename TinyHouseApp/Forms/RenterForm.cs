@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 using TinyHouseApp.Helpers;
@@ -48,6 +50,30 @@ namespace TinyHouseApp.Forms
         {
             var form = new CommentForm(_renterId);
             form.ShowDialog();
+        }
+
+        private void dgvHousesAvail_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvHousesAvail.CurrentRow == null) return;
+
+            int houseId = Convert.ToInt32(dgvHousesAvail.CurrentRow.Cells["HouseID"].Value);
+            var dt = DBHelper.GetHouseImages(houseId);
+            if (dt.Rows.Count > 0)
+            {
+                string path = dt.Rows[0]["ImagePath"].ToString();
+                if (File.Exists(path))
+                {
+                    pbHouseImage.Image = Image.FromFile(path);
+                }
+                else
+                {
+                    pbHouseImage.Image = null;
+                }
+            }
+            else
+            {
+                pbHouseImage.Image = null;
+            }
         }
     }
 }

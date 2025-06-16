@@ -7,6 +7,7 @@
         private System.Windows.Forms.Button btnReserve;
         private System.Windows.Forms.Button btnPay;
         private System.Windows.Forms.Button btnComment;
+        private System.Windows.Forms.PictureBox pbHouseImage;
 
         protected override void Dispose(bool disposing)
         {
@@ -22,8 +23,10 @@
             btnReserve = new Button();
             btnPay = new Button();
             btnComment = new Button();
+            pbHouseImage = new PictureBox();
             pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvHousesAvail).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbHouseImage).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -56,6 +59,7 @@
             dgvHousesAvail.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvHousesAvail.Size = new Size(813, 675);
             dgvHousesAvail.TabIndex = 0;
+            dgvHousesAvail.SelectionChanged += dgvHousesAvail_SelectionChanged;
             // 
             // btnReserve
             // 
@@ -104,14 +108,24 @@
             btnComment.Text = "Yorum Yap";
             btnComment.UseVisualStyleBackColor = false;
             btnComment.Click += btnComment_Click;
-            // 
+            //
+            // pbHouseImage
+            //
+            pbHouseImage.BorderStyle = BorderStyle.FixedSingle;
+            pbHouseImage.Location = new Point(847, 16);
+            pbHouseImage.Name = "pbHouseImage";
+            pbHouseImage.Size = new Size(149, 140);
+            pbHouseImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbHouseImage.TabIndex = 4;
+            pbHouseImage.TabStop = false;
+            //
             // pictureBox1
-            // 
+            //
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(-111, -25);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(1207, 798);
-            pictureBox1.TabIndex = 4;
+            pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             // 
             // RenterForm
@@ -123,6 +137,7 @@
             Controls.Add(btnComment);
             Controls.Add(btnPay);
             Controls.Add(btnReserve);
+            Controls.Add(pbHouseImage);
             Controls.Add(dgvHousesAvail);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -131,6 +146,7 @@
             Name = "RenterForm";
             Text = "Kiracı Paneli";
             ((System.ComponentModel.ISupportInitialize)dgvHousesAvail).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbHouseImage).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }

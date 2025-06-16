@@ -13,6 +13,8 @@
         private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.CheckBox chkActive;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnUpload;
+        private System.Windows.Forms.PictureBox pbPreview;
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.Panel panelForm;
@@ -37,6 +39,8 @@
             txtLocation = new TextBox();
             chkActive = new CheckBox();
             btnSave = new Button();
+            btnUpload = new Button();
+            pbPreview = new PictureBox();
             panelHeader = new Panel();
             lblHeader = new Label();
             panelForm = new Panel();
@@ -45,6 +49,7 @@
             ((System.ComponentModel.ISupportInitialize)numPrice).BeginInit();
             panelHeader.SuspendLayout();
             panelForm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbPreview).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -138,9 +143,33 @@
             chkActive.TabIndex = 8;
             chkActive.Text = "Aktif mi?";
             chkActive.CheckedChanged += chkActive_CheckedChanged;
-            // 
+            //
+            // btnUpload
+            //
+            btnUpload.BackColor = Color.SteelBlue;
+            btnUpload.FlatAppearance.BorderSize = 0;
+            btnUpload.FlatStyle = FlatStyle.Flat;
+            btnUpload.ForeColor = Color.White;
+            btnUpload.Location = new Point(20, 278);
+            btnUpload.Name = "btnUpload";
+            btnUpload.Size = new Size(200, 40);
+            btnUpload.TabIndex = 9;
+            btnUpload.Text = "Resim Seç";
+            btnUpload.UseVisualStyleBackColor = false;
+            btnUpload.Click += btnUpload_Click;
+            //
+            // pbPreview
+            //
+            pbPreview.BorderStyle = BorderStyle.FixedSingle;
+            pbPreview.Location = new Point(20, 67);
+            pbPreview.Name = "pbPreview";
+            pbPreview.Size = new Size(200, 200);
+            pbPreview.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbPreview.TabIndex = 10;
+            pbPreview.TabStop = false;
+            //
             // btnSave
-            // 
+            //
             btnSave.BackColor = Color.SteelBlue;
             btnSave.FlatAppearance.BorderSize = 0;
             btnSave.FlatStyle = FlatStyle.Flat;
@@ -181,6 +210,8 @@
             // 
             panelForm.BackColor = Color.White;
             panelForm.Controls.Add(btnSave);
+            panelForm.Controls.Add(btnUpload);
+            panelForm.Controls.Add(pbPreview);
             panelForm.Controls.Add(lblTitle);
             panelForm.Controls.Add(txtTitle);
             panelForm.Controls.Add(lblDesc);
@@ -234,6 +265,7 @@
             panelHeader.PerformLayout();
             panelForm.ResumeLayout(false);
             panelForm.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbPreview).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
